@@ -22,7 +22,7 @@ const App: React.FC = () => {
       const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 
       const { data } = await axios.get(
-        `https://${proxyUrl}newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
+        `${proxyUrl}newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
       )
 
       setNews(data.articles)

@@ -5,6 +5,10 @@ interface NewsContextType {
   setNews: React.Dispatch<React.SetStateAction<News[]>>
   totalResults: number
   setTotalResults: React.Dispatch<React.SetStateAction<number>>
+  loadMore: number
+  setLoadMore: React.Dispatch<React.SetStateAction<number>>
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface News {

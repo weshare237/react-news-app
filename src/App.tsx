@@ -8,19 +8,24 @@ import apiKey from './data/config'
 import Footer from './components/Footer/Footer'
 
 const App: React.FC = () => {
-  const { category, setNews, news, setTotalResults, totalResults } = NewsState()
-
-  const [result, setResult] = useState<News[]>([])
+  const {
+    category,
+    setNews,
+    setTotalResults,
+    totalResults,
+    loadMore,
+    setLoading,
+  } = NewsState()
 
   const fetchNews = async () => {
     try {
       const { data } = await axios.get(
-        `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}`
+        `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
       )
 
       setNews(data.articles)
       setTotalResults(data.totalResults)
-      console.log(news)
+      setLoading(false)
     } catch (error: any) {
       console.log(error.response)
     }
@@ -28,7 +33,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     fetchNews()
-  }, [category, totalResults])
+  }, [category, totalResults, loadMore])
 
   return (
     <div className='App'>

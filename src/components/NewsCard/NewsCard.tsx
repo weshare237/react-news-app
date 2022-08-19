@@ -34,11 +34,9 @@ const NewsCard: React.FC<Props> = ({ newsItem }) => {
             <span className='muted'>
               {newsItem.author ? newsItem.author : 'unknown'} /{' '}
               {time
-                ? `${hour - 12}:${date[4].substring(3, 5)}:${date[4].substring(
-                    6,
-                    8
-                  )}`
-                : ''}
+                ? `${hour - 12}:${date[4].substring(3, 5)} PM`
+                : `${hour}:${date[4].substring(3, 5)} AM`}{' '}
+              on {date[2]} {date[1]} {date[3]}, {date[0]}
             </span>
           </span>
         </div>

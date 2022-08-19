@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import axios from 'axios'
 import { NewsState } from './context/NewsProvider'
 import NewsContent from './components/NewsContent/NewsContent'
-import apiKey from './data/config'
+
 import Footer from './components/Footer/Footer'
 
 const App: React.FC = () => {
@@ -22,7 +22,7 @@ const App: React.FC = () => {
       const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 
       const { data } = await axios.get(
-        `${proxyUrl}newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
+        `${proxyUrl}https://newsapi.org/v2/top-headlines?apiKey=${process.env.REACT_APP_API_KEY}&category=${category}&pageSize=${loadMore}`
       )
 
       setNews(data.articles)

@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <div className='footer'>
       <span className='name'>
-        Qalert made by -{' '}
+        Qlert made by -{' '}
         <a
           href='https://www.linkedin.com/in/fopa-kuete-duclair-85a758148/'
           target='__blank'

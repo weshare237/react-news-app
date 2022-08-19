@@ -1,6 +1,6 @@
 import { LoadingButton } from '@mui/lab'
 import { Container } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import { NewsState } from '../../context/NewsProvider'
 import NewsCard from '../NewsCard/NewsCard'
 import './NewsContent.css'

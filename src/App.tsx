@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import axios from 'axios'
@@ -19,6 +19,8 @@ const App: React.FC = () => {
 
   const fetchNews = async () => {
     try {
+      const proxyUrl = 'cors-anywhere.herokuapp.com/'
+
       const { data } = await axios.get(
         `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
       )
@@ -33,6 +35,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     fetchNews()
+    // eslint-disable-next-line
   }, [category, totalResults, loadMore])
 
   return (

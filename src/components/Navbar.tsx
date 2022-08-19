@@ -12,7 +12,7 @@ const Navbar = () => {
         src='Qlert.png'
         height='80%'
         alt='logo'
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: 'pointer', borderRadius: '15px' }}
       />
     </div>
   )

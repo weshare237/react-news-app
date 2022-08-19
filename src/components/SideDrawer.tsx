@@ -12,10 +12,12 @@ import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
 import MenuIcon from '@mui/icons-material/Menu'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import categories from '../data/category'
+import { NewsState } from '../context/NewsProvider'
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
 
-const SideDrawer = () => {
+const SideDrawer: React.FC = () => {
   const [state, setState] = React.useState({
     left: false,
   })
@@ -25,6 +27,8 @@ const SideDrawer = () => {
       mode: 'dark',
     },
   })
+
+  const { setCategory } = NewsState()
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -43,27 +47,24 @@ const SideDrawer = () => {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: 200, paddingLeft: '10px', paddingRight: '5px' }}
       role='presentation'
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>CATEGORIES</ListItem>
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {categories.map((text, index) => (
+          <ListItem
+            button
+            key={text}
+            disablePadding
+            onClick={() => setCategory(text)}
+            style={{ height: 40, borderRadius: 3 }}
+          >
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

@@ -19,8 +19,6 @@ const App: React.FC = () => {
 
   const fetchNews = async () => {
     try {
-      const proxyUrl = 'cors-anywhere.herokuapp.com/'
-
       const { data } = await axios.get(
         `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&category=${category}&pageSize=${loadMore}`
       )
